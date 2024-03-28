@@ -71,9 +71,31 @@ st.write("Enter URLs (one per line) and a question to query the documents.")
 urls = st.text_area("Enter URLs separated by new lines", height=150)
 question = st.text_input("Question")
 
+# Creating two columns of equal width
+col1, col2 = st.columns(2)
+
 # Button to process input
-if st.button('Query Documents'):
-    with st.spinner('Processing...'):
-        answer = process_input(urls, question)
-        st.text_area("Answer", value=answer, height=300, disabled=True)
-        
+def buttonDocuments():
+    if st.button('Query Documents'):
+        with st.spinner('Processing...'):
+            answerDocuments = process_input(urls, question)
+            return answerDocuments
+    return None
+def buttonModel():
+    if st.button('Query Model'):
+        with st.spinner('Processing...'):
+            answerFromModel = process_input("", question)
+            return answerFromModel
+    return None
+
+
+with col1:
+    answerDocuments = buttonDocuments()
+with col2:
+    answerModel = buttonModel()
+
+if (answerDocuments):
+    st.text_area("Answer Documents", value=answerDocuments, height=300, disabled=True)
+
+if (answerModel):
+    st.text_area("Answer Model", value=answerModel, height=300, disabled=True)
