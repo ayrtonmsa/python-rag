@@ -36,12 +36,13 @@ streamlit run app.py
 ### With Embeddings
 
 - Copy and paste the URLs you want searched based on.
-- Make a question.
+- Make your question.
+- Click on Query Documents.
 
 ### Without Embeddings
 
-- Remove all links.
-- Make a question.
+- Make your question.
+- Click on Query Model.
 
 ## Using a Different Model
 
